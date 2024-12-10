@@ -91,7 +91,8 @@ class ETL:
             "first.sql",
             "second.sql",
             "third.sql",
-            "fourh.sql"
+            "fourh.sql",
+            "fifth.sql"
         ]
 
         for sql_file in sql_files:
