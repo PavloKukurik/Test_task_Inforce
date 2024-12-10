@@ -1,3 +1,7 @@
+"""
+The python scrypt with ETL implementation
+"""
+
 # Import libs
 import re
 import os
@@ -102,15 +106,17 @@ class ETL:
         print("ETL process completed successfully and SQL queries executed.")
 
 
-# Params initialisation
-load_dotenv()
-db_host = os.getenv("DB_HOST")
-db_port = os.getenv("DB_PORT")
-db_user = os.getenv("DB_USER")
-db_password = os.getenv("DB_PASSWORD")
-db_name = os.getenv("DB_NAME")
+# Main block to prevent execution when imported
+if __name__ == "__main__":
+    # Params initialisation
+    load_dotenv()
+    db_host = os.getenv("DB_HOST")
+    db_port = os.getenv("DB_PORT")
+    db_user = os.getenv("DB_USER")
+    db_password = os.getenv("DB_PASSWORD")
+    db_name = os.getenv("DB_NAME")
 
-db_connection_str = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
+    db_connection_str = f"postgresql://{db_user}:{db_password}@{db_host}:{db_port}/{db_name}"
 
-etl = ETL(csv_path="data/generated_data.csv", db_connection=db_connection_str)
-etl.run(table_name="user_data")
+    etl = ETL(csv_path="data/generated_data.csv", db_connection=db_connection_str)
+    etl.run(table_name="user_data")
